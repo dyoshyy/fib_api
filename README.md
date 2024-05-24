@@ -1,8 +1,14 @@
+## 環境構築
 ```
-npm install
-npm run dev
+bun install
+bun run dev
+```
+## テスト
+```
+bun run test
 ```
 
+## デプロイ
 ```
-npm run deploy
+bun run deploy
 ```
