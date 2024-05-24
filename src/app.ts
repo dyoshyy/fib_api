@@ -8,13 +8,13 @@ const app = new Hono()
 const schema = z.object({
   n: z
   .string()
-  .min(1, { message: 'Query parameter is required' })
   .transform((val) => parseInt(val))
-  .refine((val) => !isNaN(val), { message: 'Not a number' })
+  .refine((val) => !isNaN(val), { message: 'n must be a number.' })
+  .refine((val) => val > 0, { message: 'n must be positive' })
 });
 
 app.get('/', (c) => {
-  return c.text('usage: go to /fib?n=5 to calculate the 5th Fibonacci number')
+  return c.text('go to /fib (GET) to calculate fibonacci number')
   }
 )
 
@@ -26,19 +26,20 @@ app.get(
     (result, c) => {
       if (!result.success) {
         console.log(result.error.issues)
-        return c.json({ "status": result.error.issues[0].code, "message": result.error.issues[0].message}, 400)
+        return c.json({ "status": 400, "message": `${result.error.issues[0].message}` }, 400)
       }
     }
   ),
   (c) => {
 
-    // バリデート済みの値を取得
-    const n = c.req.valid("query").n
+  // バリデート済みの値を取得
+  const n = c.req.valid("query").n
 
-    // フィボナッチ数を計算
-    const result = fibonacci(n)
+  // フィボナッチ数を計算
+  const result = fibonacci(n)
 
-    return c.json({ result })
+  return c.json({ result })
+
   }
 )
 
