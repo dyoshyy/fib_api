@@ -10,7 +10,7 @@ const schema = z.object({
   .string()
   .transform((val) => parseInt(val))
   .refine((val) => !isNaN(val), { message: 'n must be a number.' })
-  .refine((val) => val > 0, { message: 'n must be positive' })
+  .refine((val) => val > 0, { message: 'n must be positive.' })
 });
 
 app.get('/', (c) => {
@@ -25,7 +25,6 @@ app.get(
     schema,
     (result, c) => {
       if (!result.success) {
-        console.log(result.error.issues)
         return c.json({ "status": 400, "message": `${result.error.issues[0].message}` }, 400)
       }
     }
