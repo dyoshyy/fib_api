@@ -1,17 +1,9 @@
 import { Hono } from 'hono'
 import { fibonacci } from './funcs/fib'
-import { z } from 'zod'
 import { zValidator } from '@hono/zod-validator'
+import { fibValidationSchema } from './validations/schemas'
 
 const app = new Hono()
-
-const schema = z.object({
-  n: z
-  .string()
-  .transform((val) => parseInt(val))
-  .refine((val) => !isNaN(val), { message: 'n must be a number.' })
-  .refine((val) => val > 0, { message: 'n must be positive.' })
-});
 
 app.get('/', (c) => {
   return c.text('go to /fib (GET) to calculate fibonacci number')
@@ -22,7 +14,7 @@ app.get(
   '/fib',
   zValidator(
     "query", 
-    schema,
+    fibValidationSchema,
     (result, c) => {
       if (!result.success) {
         return c.json({ "status": 400, "message": `${result.error.issues[0].message}` }, 400)
