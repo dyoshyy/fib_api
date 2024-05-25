@@ -1,4 +1,4 @@
-name: Deploy
+name: CI/CD
 
 # devブランチがpushされるたびに起動
 on:
@@ -31,7 +31,7 @@ jobs:
       
       # テストの実行
       - name: Run tests
-        run: bun run test
+        run: bun test
 
       # honoのデプロイコマンドに、CloudflareのAPIトークンを環境変数として渡してRUNする。
       - name: Deploy
