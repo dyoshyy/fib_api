@@ -1,0 +1,40 @@
+name: Deploy
+
+# devブランチがpushされるたびに起動
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    name: Deploy
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 'latest'
+
+      # パッケージのインストール
+      - name: Install dependencies
+        run: bun install
+
+      # TypeScriptのビルド
+      - name: Run build
+        run: bun run build
+      
+      # テストの実行
+      - name: Run tests
+        run: bun run test
+
+      # honoのデプロイコマンドに、CloudflareのAPIトークンを環境変数として渡してRUNする。
+      - name: Deploy
+        run: pnpm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
