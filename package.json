@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "wrangler dev src/app.ts",
+    "test": "jest",
     "deploy": "wrangler deploy --minify src/app.ts",
     "build": "tsc"
   },
