@@ -1,9 +1,7 @@
-import { Hono } from 'hono'
-import { rootRouter } from './router/root'
-import { fibRouter } from './router/fib'
+import { Hono } from "hono";
+import { rootRouter } from "./router/root";
+import { fibRouter } from "./router/fib";
 
-const app = new Hono()
-  .route("/", rootRouter)
-  .route("/fib", fibRouter)
+const app = new Hono().route("/", rootRouter).route("/fib", fibRouter);
 
-export default app
+export default app;

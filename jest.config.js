@@ -5,25 +5,17 @@
 
 /** @type {import('jest').Config} */
 const config = {
-  coverageProvider: "v8",
+	coverageProvider: "v8",
 
-  roots: [
-    "<rootDir>/src/__test__"
-  ],
+	roots: ["<rootDir>/src/__test__"],
 
-  testMatch: [
-    "**/*.test.ts"
-  ],
+	testMatch: ["**/*.test.ts"],
 
-  testPathIgnorePatterns: [
-    "/dist/",
-    "/node_modules/"
-  ],
-  
-  transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
-  },
-  
+	testPathIgnorePatterns: ["/dist/", "/node_modules/"],
+
+	transform: {
+		"^.+\\.(ts|tsx)$": "ts-jest",
+	},
 };
 
 module.exports = config;
