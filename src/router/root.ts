@@ -1,8 +1,7 @@
-import { Hono } from 'hono';
+import { Hono } from "hono";
 
 export const rootRouter = new Hono();
 
-rootRouter.get('/', (c) => {
-  return c.text('go to /fib (GET) to calculate fibonacci number')
-  }
-)
+rootRouter.get("/", (c) => {
+	return c.text("go to /fib (GET) to calculate fibonacci number");
+});

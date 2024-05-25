@@ -1,20 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "skipLibCheck": true,
-    "lib": [
-      "ESNext"
-    ],
-    "types": [
-      "@cloudflare/workers-types",
-      "@types/jest"
-    ],
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
-  },
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"strict": true,
+		"skipLibCheck": true,
+		"lib": ["ESNext"],
+		"types": ["@cloudflare/workers-types", "@types/jest"],
+		"jsx": "react-jsx",
+		"jsxImportSource": "hono/jsx"
+	}
 }

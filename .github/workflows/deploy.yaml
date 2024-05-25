@@ -1,6 +1,6 @@
 name: CI/CD
 
-# devブランチがpushされるたびに起動
+# mainブランチにpushされるたびに起動
 on:
   push:
     branches:
@@ -9,9 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     name: Deploy
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,7 +17,7 @@ jobs:
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
         with:
-          bun-version: 'latest'
+          bun-version: "latest"
 
       # パッケージのインストール
       - name: Install dependencies
@@ -28,7 +26,15 @@ jobs:
       # TypeScriptのビルド
       - name: Run build
         run: bun run build
-      
+
+      # formatの実行
+      - name: Run format
+        run: bun run format
+
+      # lintの実行
+      - name: Run lint
+        run: bun run lint
+
       # テストの実行
       - name: Run tests
         run: bun run test
