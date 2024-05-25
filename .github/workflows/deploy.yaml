@@ -35,6 +35,6 @@ jobs:
 
       # honoのデプロイコマンドに、CloudflareのAPIトークンを環境変数として渡してRUNする。
       - name: Deploy
-        run: pnpm run deploy
+        run: bun run deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
