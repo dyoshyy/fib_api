@@ -42,9 +42,4 @@ export const testCases: testCasesType = [
 		queryParameter: { n: "50" },
 		expectedResponse: { result: 12586269025 },
 	},
-	// {
-	//   description: '大きな数を指定した場合',
-	//   queryParameter: { n : '100' },
-	//   expectedResponse: { result: 3.5422484817926E+20 }
-	// },
 ];
