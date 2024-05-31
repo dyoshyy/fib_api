@@ -26,7 +26,7 @@
 
 ## スクリプト
 
-- `bun install`: 依存関係をインストールします。
-- `bun run dev`: 開発サーバーを起動します。
-- `bun run test`: Jest を使用してテストを実行します。
-- `bun run deploy`: プロジェクトをデプロイします。
+- `bun install`: 依存関係をインストール
+- `bun run dev`: 開発サーバーを起動
+- `bun run test`: Jest を使用してテストを実行
+- `bun run deploy`: プロジェクトをデプロイ
